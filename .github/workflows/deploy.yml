@@ -29,7 +29,7 @@ jobs:
       - name: Deploy Frontend via FTP to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ftp.digieonix.com
+          server: 92.112.189.115
           username: u791202660.Services
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/
