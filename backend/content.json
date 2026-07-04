@@ -1,0 +1,432 @@
+{
+  "branding": {
+    "logo": "/logo.png"
+  },
+  "hero": {
+    "headlines": [
+      "We Run Meta Ads That Convert.",
+      "We Build Brands Digitally.",
+      "We Generate Leads That Close."
+    ],
+    "subtext": "Digieonix is a performance-driven digital marketing agency helping businesses grow online — from Pakistan to the world.",
+    "cta1Text": "Get Started",
+    "cta2Text": "View Our Work"
+  },
+  "stats": [
+    {
+      "value": 50,
+      "suffix": "+",
+      "label": "Happy Clients"
+    },
+    {
+      "value": 100,
+      "suffix": "+",
+      "label": "Campaigns Launched"
+    },
+    {
+      "value": 3,
+      "suffix": "+",
+      "label": "Years Experience"
+    },
+    {
+      "value": 5,
+      "suffix": "",
+      "label": "Core Services"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "icon": "FaChartLine",
+      "title": "Social Media Marketing",
+      "shortDesc": "Data-driven campaigns that grow your brand.",
+      "fullDesc": "We create data-driven social media campaigns that grow your audience, build brand awareness, and drive real engagement across Facebook, Instagram, TikTok, and more.",
+      "features": [
+        "Content Strategy",
+        "Audience Targeting",
+        "Ad Campaign Management",
+        "Monthly Analytics Report"
+      ]
+    },
+    {
+      "id": 2,
+      "icon": "FaCalendarAlt",
+      "title": "Social Media Management",
+      "shortDesc": "Consistent content and community management.",
+      "fullDesc": "Consistent, high-quality content creation and community management to keep your brand active and your audience engaged every single day.",
+      "features": [
+        "Daily Post Creation",
+        "Story & Reel Production",
+        "Comment & DM Management",
+        "Performance Tracking"
+      ]
+    },
+    {
+      "id": 3,
+      "icon": "FaLaptopCode",
+      "title": "Web Development",
+      "shortDesc": "Fast, mobile-optimized websites that convert.",
+      "fullDesc": "We design and develop fast, mobile-optimized, and conversion-focused websites that represent your brand professionally.",
+      "features": [
+        "Custom UI/UX Design",
+        "Mobile Responsive",
+        "SEO-Optimized Code",
+        "3 Free Revisions"
+      ]
+    },
+    {
+      "id": 4,
+      "icon": "FaSearch",
+      "title": "Search Engine Optimization",
+      "shortDesc": "Rank higher on Google and drive organic traffic.",
+      "fullDesc": "Rank higher on Google and attract organic traffic that actually converts. Our proven SEO strategies are built for sustainable long-term growth.",
+      "features": [
+        "Keyword Research",
+        "On-Page Optimization",
+        "Link Building",
+        "Monthly SEO Report"
+      ]
+    },
+    {
+      "id": 5,
+      "icon": "FaBullseye",
+      "title": "PPC / Meta Ads Expert",
+      "shortDesc": "ROI-focused Facebook and Instagram ads.",
+      "fullDesc": "ROI-focused paid advertising on Facebook and Instagram. We build, manage, and scale ad campaigns that bring in leads and sales.",
+      "features": [
+        "Campaign Setup & Structure",
+        "A/B Creative Testing",
+        "Audience Research",
+        "Weekly ROAS Reports"
+      ]
+    }
+  ],
+  "pricing": [
+    {
+      "id": 1,
+      "icon": "FaChartLine",
+      "service": "Social Media Marketing",
+      "price": "49,999",
+      "period": "month",
+      "features": [
+        "Content Strategy",
+        "4 Platforms",
+        "Ad Management",
+        "Monthly Report"
+      ],
+      "featured": false
+    },
+    {
+      "id": 2,
+      "icon": "FaCalendarAlt",
+      "service": "Social Media Management",
+      "price": "40,000",
+      "period": "month",
+      "features": [
+        "Daily Posts",
+        "Story Creation",
+        "Community Management",
+        "Analytics"
+      ],
+      "featured": false
+    },
+    {
+      "id": 3,
+      "icon": "FaLaptopCode",
+      "service": "Web Development",
+      "price": "60,000",
+      "period": "one-time",
+      "features": [
+        "Custom Design",
+        "Mobile Responsive",
+        "SEO Ready",
+        "3 Revisions"
+      ],
+      "featured": false
+    },
+    {
+      "id": 4,
+      "icon": "FaSearch",
+      "service": "SEO",
+      "price": "55,000",
+      "period": "month",
+      "features": [
+        "Keyword Research",
+        "On-Page SEO",
+        "Link Building",
+        "Monthly Report"
+      ],
+      "featured": false
+    },
+    {
+      "id": 5,
+      "icon": "FaBullseye",
+      "service": "PPC / Meta Ads",
+      "price": "50,000",
+      "period": "month",
+      "features": [
+        "Campaign Setup",
+        "A/B Testing",
+        "Audience Research",
+        "Weekly ROAS Reports"
+      ],
+      "featured": true
+    }
+  ],
+  "portfolio": [
+    {
+      "id": 1,
+      "title": "Hello Kitty Bra Campaign",
+      "category": "Meta Ads",
+      "client": "Luxury Desires PK",
+      "desc": "Full-funnel Meta Ads campaign for a fashion e-commerce brand.",
+      "results": "4.1x ROAS, PKR 2.1M revenue in 30 days"
+    },
+    {
+      "id": 2,
+      "title": "Real Estate Lead Gen",
+      "category": "Meta Ads",
+      "client": "US Real Estate Client",
+      "desc": "Facebook lead generation for a US-based real estate agent.",
+      "results": "142 leads at $8.3 CPL"
+    },
+    {
+      "id": 3,
+      "title": "Digieonix Agency Website",
+      "category": "Web Development",
+      "client": "Internal",
+      "desc": "Full React + Vite agency website with animations.",
+      "results": "100% custom design, 95+ PageSpeed score"
+    },
+    {
+      "id": 4,
+      "title": "E-Commerce SEO Growth",
+      "category": "SEO",
+      "client": "Fashion Brand",
+      "desc": "On-page + off-page SEO for a Pakistani e-commerce store.",
+      "results": "210% organic traffic growth in 4 months"
+    },
+    {
+      "id": 5,
+      "title": "Instagram Growth Campaign",
+      "category": "Social Media",
+      "client": "Local Business",
+      "desc": "Content strategy and daily management for Instagram.",
+      "results": "0 to 12K followers in 3 months"
+    },
+    {
+      "id": 6,
+      "title": "Dental Clinic Lead Gen",
+      "category": "Meta Ads",
+      "client": "UK Dental Clinic",
+      "desc": "Meta Ads targeting local patients for a UK dental clinic.",
+      "results": "68 booked appointments, £4.20 CPL"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "James Mitchell",
+      "role": "Real Estate Agent",
+      "company": "USA",
+      "text": "Digieonix ran our Facebook lead gen campaign and delivered 140+ leads in the first month. Incredible ROI.",
+      "stars": 5
+    },
+    {
+      "id": 2,
+      "name": "Sarah Thompson",
+      "role": "E-Commerce Owner",
+      "company": "UK",
+      "text": "Our Meta Ads ROAS went from 1.2x to 4.1x within 6 weeks. These guys know what they're doing.",
+      "stars": 5,
+      "avatar": "http://localhost:5000/uploads/1782437412921-Untitled-design-(29).png"
+    },
+    {
+      "id": 3,
+      "name": "Ahmed Raza",
+      "role": "Fashion Brand Owner",
+      "company": "Pakistan",
+      "text": "Website delivered on time, looks amazing, and conversions improved immediately. Highly recommend!",
+      "stars": 5
+    }
+  ],
+  "team": [
+    {
+      "id": 1,
+      "name": "Shahzaib Aslam",
+      "role": "Founder & CEO",
+      "image": "http://localhost:5000/uploads/1782491862662-ChatGPT-Image-Jun-13,-2026,-01_16_11-AM.png",
+      "bio": "Visionary leader with 10+ years of experience in scaling digital brands.",
+      "social": {
+        "linkedin": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Dogii",
+      "role": "Head of Marketing",
+      "image": "http://localhost:5000/uploads/1782494793170-ChatGPT_Image_Jun_19_2026_01_32_18_AM.png",
+      "bio": "Data-driven marketer specializing in high-converting Meta Ad campaigns.",
+      "social": {
+        "linkedin": "#",
+        "twitter": "#"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Ali Raza",
+      "role": "Lead Developer",
+      "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop",
+      "bio": "Full-stack expert obsessed with clean code and lightning-fast web experiences.",
+      "social": {
+        "linkedin": "#",
+        "twitter": "#"
+      }
+    }
+  ],
+  "contactInfo": {
+    "email": "contact@digieonix.com",
+    "whatsapp": "https://wa.me/923001234567",
+    "location": "Lahore, Punjab, Pakistan",
+    "responseTime": "Within 24 hours",
+    "workingHours": "Mon–Sat, 10am–8pm PKT"
+  },
+  "socialLinks": {
+    "instagram": "https://instagram.com/digieonix",
+    "facebook": "https://facebook.com/digieonix",
+    "linkedin": "https://linkedin.com/company/digieonix",
+    "youtube": "https://youtube.com/@digieonix",
+    "tiktok": "https://tiktok.com/@digieonix"
+  },
+  "ctaBanner": {
+    "headline": "Ready to Grow Your Business Digitally?",
+    "subtext": "Let's talk about how Digieonix can help you dominate online.",
+    "buttonText": "Book a Free Consultation"
+  },
+  "faq": [
+    {
+      "q": "Are these prices fixed?",
+      "a": "These are starting prices. Final cost depends on scope. Contact us for a custom quote."
+    },
+    {
+      "q": "Do you work with international clients?",
+      "a": "Yes! We serve clients in UK, USA, and beyond."
+    },
+    {
+      "q": "What payment methods do you accept?",
+      "a": "Bank transfer, Wise, PayPal, and local Pakistani bank transfer."
+    },
+    {
+      "q": "Is there a contract?",
+      "a": "Month-to-month for ongoing services. No lock-in contracts."
+    },
+    {
+      "q": "How do I get started?",
+      "a": "Fill out the contact form and we'll get back within 24 hours."
+    }
+  ],
+  "layout": [
+    "hero",
+    "servicesPreview",
+    "ourProcess",
+    "whyChooseUs",
+    "statsBar",
+    "testimonialsPreview"
+  ],
+  "about": {
+    "narrative": {
+      "title": "A Performance-Driven Agency That Delivers Results",
+      "paragraphs": [
+        "Digieonix was founded with one goal — to help businesses grow digitally without the fluff. We're a results-first agency that focuses on what matters: leads, sales, and ROI.",
+        "Based in Lahore, Pakistan, we work with clients across the UK, USA, and beyond — delivering world-class digital marketing services at competitive rates.",
+        "From Meta Ads to web development, SEO to social media — we're your full-stack digital growth partner."
+      ]
+    },
+    "values": [
+      {
+        "icon": "Target",
+        "title": "Results First",
+        "description": "We measure success in leads, sales, and ROI. Not vanity metrics."
+      },
+      {
+        "icon": "Eye",
+        "title": "Transparency",
+        "description": "No hidden fees. No vague reports. You always know what's happening."
+      },
+      {
+        "icon": "HeartHandshake",
+        "title": "Client Success",
+        "description": "Your growth is our growth. We treat every client like a long-term partner."
+      }
+    ],
+    "checklist": [
+      "International-quality work at Pakistan rates",
+      "Dedicated account manager for every client",
+      "Data-driven strategies, not guesswork",
+      "Weekly/monthly performance reports",
+      "Fast turnaround and responsive communication",
+      "Proven results across multiple industries"
+    ]
+  },
+  "privacy": [
+    {
+      "title": "1. Information We Collect",
+      "content": "At Digieonix, we collect information that you provide directly to us, such as when you fill out a contact form, request a quote, or communicate with us via email or WhatsApp. This information may include your name, email address, phone number, and any other details you choose to provide."
+    },
+    {
+      "title": "2. How We Use Your Information",
+      "content": "We use the information we collect to:\n- Provide, maintain, and improve our digital marketing and web development services.\n- Communicate with you regarding your projects, inquiries, and support requests.\n- Send you technical notices, updates, and administrative messages.\n- Analyze trends, usage, and activities in connection with our website."
+    },
+    {
+      "title": "3. Data Security",
+      "content": "We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. However, please note that no method of transmission over the Internet or electronic storage is 100% secure."
+    },
+    {
+      "title": "4. Sharing of Information",
+      "content": "We do not sell, trade, or rent your personal identification information to others. We may share generic aggregated demographic information not linked to any personal identification information regarding visitors and users with our business partners and trusted affiliates."
+    },
+    {
+      "title": "5. Third-Party Links",
+      "content": "Our website may contain links to third-party websites. We are not responsible for the privacy practices or the content of those third-party sites. We encourage you to review the privacy policies of those websites before providing them with your personal information."
+    },
+    {
+      "title": "6. Changes to This Privacy Policy",
+      "content": "Digieonix reserves the right to update this privacy policy at any time. When we do, we will revise the updated date at the bottom of this page. We encourage Users to frequently check this page for any changes."
+    },
+    {
+      "title": "7. Contact Us",
+      "content": "If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at info@digieonix.com."
+    }
+  ],
+  "terms": [
+    {
+      "title": "1. Acceptance of Terms",
+      "content": "By accessing or using the services provided by Digieonix, you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions of this agreement, then you may not access the website or use any of our services."
+    },
+    {
+      "title": "2. Services Rendered",
+      "content": "Digieonix provides digital marketing, social media management, search engine optimization (SEO), web development, and pay-per-click (PPC) advertising services. The specific scope, timeline, and cost of services will be outlined in a separate proposal or contract agreed upon by both parties."
+    },
+    {
+      "title": "3. Payment Terms",
+      "content": "Payment schedules will be detailed in your individual project contract. Unless otherwise specified, a 50% upfront deposit is required before the commencement of any project, with the remaining 50% due upon completion and before final delivery or launch."
+    },
+    {
+      "title": "4. Intellectual Property",
+      "content": "Upon full payment, the client retains the intellectual property rights to the final deliverables (e.g., website code, custom graphics). Digieonix reserves the right to use the completed work as part of our portfolio and for marketing purposes, unless a Non-Disclosure Agreement (NDA) has been signed."
+    },
+    {
+      "title": "5. Client Responsibilities",
+      "content": "The client agrees to provide all necessary materials, information, and approvals in a timely manner to ensure the smooth progress of the project. Delays on the client's end may result in corresponding delays in the project timeline."
+    },
+    {
+      "title": "6. Limitation of Liability",
+      "content": "In no event shall Digieonix, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service."
+    },
+    {
+      "title": "7. Termination",
+      "content": "We may terminate or suspend access to our Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms. All provisions of the Terms which by their nature should survive termination shall survive termination."
+    }
+  ]
+}
