@@ -1033,10 +1033,6 @@ const AdminDashboard = () => {
       <div className="w-[260px] bg-[#111111] border-r border-gray-800 flex flex-col hidden md:flex shrink-0">
         <div className="p-6 border-b border-gray-800 flex flex-col items-center justify-center gap-3">
           <img src={content?.branding?.logo || "/logo.png"} alt="Digieonix" className="h-8 object-contain" />
-          <div className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            {liveUsers} Active Visitors
-          </div>
         </div>
         <div className="flex-1 overflow-y-auto py-4">
           {tabs.map((tab) => (
