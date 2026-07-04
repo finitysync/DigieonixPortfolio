@@ -1,10 +1,6 @@
 import { lazy, Suspense, useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { io } from 'socket.io-client';
-
-// Establish a single global socket connection for the entire app
-export const socket = io('http://localhost:5000');
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';

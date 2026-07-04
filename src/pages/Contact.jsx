@@ -6,6 +6,8 @@ import { FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube, FaTiktok } from 'rea
 import PageTransition from '../components/PageTransition';
 import usePageMeta from '../hooks/usePageMeta';
 import { useContent } from '../context/ContentContext';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 export const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -77,20 +79,28 @@ export const Contact = () => {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      // 1. Save to Firebase Firestore
+      const newLead = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || '',
+        service: formData.service,
+        budget: formData.budget,
+        message: formData.message,
+        status: 'New',
+        createdAt: new Date().toISOString()
+      };
+      
+      await addDoc(collection(db, 'leads'), newLead);
+
+      // 2. Send Email via mail.php
+      const response = await fetch('/mail.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || '',
-          service: formData.service,
-          budget: formData.budget,
-          message: formData.message
-        })
+        body: JSON.stringify(newLead)
       });
 
       const data = await response.json();
@@ -98,9 +108,12 @@ export const Contact = () => {
       if (response.ok && data.success) {
         setIsSubmitted(true);
       } else {
-        setErrors({ submit: 'Something went wrong. Please try again or contact us directly via WhatsApp.' });
+        // Even if email fails, lead is saved to Firebase. Still, show success but log error
+        console.error("Email failed:", data.message);
+        setIsSubmitted(true); // Don't block UI if email fails but DB succeeds
       }
     } catch (error) {
+      console.error(error);
       setErrors({ submit: 'Network error. Please try again or WhatsApp us directly.' });
     } finally {
       setIsSubmitting(false);

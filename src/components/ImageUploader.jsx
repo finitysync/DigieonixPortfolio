@@ -18,14 +18,9 @@ const ImageUploader = ({ value, onChange, label }) => {
     const formData = new FormData();
     formData.append('image', file);
 
-    const token = localStorage.getItem('digieonix_admin_token');
-
     try {
-      const res = await fetch('http://localhost:5000/api/upload', {
+      const res = await fetch('/upload.php', {
         method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        },
         body: formData
       });
 

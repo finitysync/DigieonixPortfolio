@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2026-07-05]
+### Changed
+- Removed Node.js backend completely to make the app 100% Serverless and Hostinger compatible.
+- Migrated Contact Form and Admin Dashboard to Firebase Firestore for data storage and real-time updates.
+- Migrated Admin Login to Firebase Authentication.
+- Created `mail.php` and `SmtpMailer.php` to handle email sending directly from Hostinger.
+- Created `upload.php` to handle image uploads directly to Hostinger's `/uploads` folder, bypassing Firebase Storage limits.
+- Removed `socket.io` dependencies.
+- Updated `deploy.yml` to support FTP deployment specifically for the `Frontend` Vite project to Hostinger.
+
 ## [2026-07-02]
 ### Added
 - Admin dashboard mein `About`, `Privacy`, aur `Terms` pages ko edit karne ke naye tabs aur forms add kiye hain taake website ka sara content backend se manage ho sake.

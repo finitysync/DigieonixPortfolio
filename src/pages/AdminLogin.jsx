@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useContent } from '../context/ContentContext';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -18,21 +20,19 @@ const AdminLogin = () => {
     setIsLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await res.json();
-
-      if (data.success) {
-        localStorage.setItem('digieonix_admin_token', data.token);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      if (userCredential.user) {
+        // Firebase automatically handles sessions, but we'll set a flag to maintain compatibility
+        localStorage.setItem('digieonix_admin_token', userCredential.user.uid);
         navigate('/admin/dashboard');
-      } else {
-        setError(data.message || 'Invalid credentials');
       }
     } catch (err) {
-      setError('Failed to connect to server');
+      console.error(err);
+      if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
+        setError('Invalid credentials');
+      } else {
+        setError('Failed to connect to Firebase. Please check your credentials and try again.');
+      }
     } finally {
       setIsLoading(false);
     }

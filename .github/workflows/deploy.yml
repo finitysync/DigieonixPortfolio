@@ -1,0 +1,36 @@
+name: Deploy Frontend to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**'
+
+jobs:
+  build-and-deploy-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React app
+        run: npm run build
+
+      - name: Deploy Frontend via FTP to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: 92.112.189.115
+          username: u791202660.digieonix.com
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/
+          server-dir: /public_html/

@@ -5,13 +5,13 @@ import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, us
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import ImageUploader from '../components/ImageUploader';
 import { SortableItem } from '../components/SortableItem';
-import { socket } from '../App';
+import { collection, onSnapshot, doc, updateDoc, writeBatch, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const AdminDashboard = () => {
   const [content, setContent] = useState(null);
   const [leads, setLeads] = useState([]);
   const [activeTab, setActiveTab] = useState('Leads');
-  const [liveUsers, setLiveUsers] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
   const [newsletterSubject, setNewsletterSubject] = useState('');
   const [newsletterBody, setNewsletterBody] = useState('');
@@ -26,66 +26,54 @@ const AdminDashboard = () => {
     }
 
     fetchContent();
-    fetchLeads(token);
+    
+    let isInitialLoad = true;
+    const unsubscribeLeads = onSnapshot(collection(db, 'leads'), (snapshot) => {
+      const leadsData = [];
+      snapshot.forEach(d => {
+        leadsData.push({ id: d.id, ...d.data() });
+      });
+      
+      // Sort by newest first
+      leadsData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setLeads(leadsData);
 
-    socket.on('liveUsersCount', (count) => {
-      setLiveUsers(count);
-    });
-
-    socket.on('newLead', (data) => {
-      toast.success(`New lead from ${data.name}!`);
-      try {
-        const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-        audio.play();
-      } catch (err) {
-        console.error('Failed to play notification sound', err);
+      if (!isInitialLoad) {
+        snapshot.docChanges().forEach((change) => {
+          if (change.type === 'added') {
+            const lead = change.doc.data();
+            toast.success(`New lead from ${lead.name}!`);
+            try {
+              const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+              audio.play();
+            } catch (err) {}
+          }
+        });
       }
-      fetchLeads(token);
+      isInitialLoad = false;
     });
 
-    return () => {
-      socket.off('liveUsersCount');
-      socket.off('newLead');
-    };
+    return () => unsubscribeLeads();
   }, [navigate]);
 
   const fetchContent = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/content');
-      const data = await res.json();
-      setContent(data);
+      const snapshot = await getDocs(collection(db, 'content'));
+      const newContent = {};
+      snapshot.forEach(d => {
+        const data = d.data();
+        newContent[d.id] = data._isArray ? data.items : data;
+      });
+      setContent(newContent);
     } catch (err) {
       toast.error('Failed to load content');
     }
   };
 
-  const fetchLeads = async (token) => {
-    try {
-      const res = await fetch('http://localhost:5000/api/leads', {
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-      const data = await res.json();
-      if (Array.isArray(data)) setLeads(data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   const handleStatusChange = async (leadId, newStatus) => {
-    const token = localStorage.getItem('digieonix_admin_token');
     try {
-      const res = await fetch(`http://localhost:5000/api/leads/${leadId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ status: newStatus })
-      });
-      if (res.ok) {
-        toast.success('Lead status updated');
-        fetchLeads(token); // refresh
-      }
+      await updateDoc(doc(db, 'leads', leadId), { status: newStatus });
+      toast.success('Lead status updated');
     } catch (err) {
       toast.error('Failed to update lead');
     }
@@ -98,22 +86,20 @@ const AdminDashboard = () => {
 
   const handleSave = async () => {
     setIsSaving(true);
-    const token = localStorage.getItem('digieonix_admin_token');
     try {
-      const res = await fetch('http://localhost:5000/api/content', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(content)
-      });
-      const data = await res.json();
-      if (data.success) {
-        toast.success('Content updated! Changes are live.', { duration: 3000 });
-      } else {
-        toast.error(data.message || 'Save failed. Please try again.');
+      const batch = writeBatch(db);
+      
+      for (const [key, value] of Object.entries(content)) {
+        const docRef = doc(db, 'content', key);
+        if (Array.isArray(value)) {
+          batch.set(docRef, { _isArray: true, items: value });
+        } else {
+          batch.set(docRef, value);
+        }
       }
+      
+      await batch.commit();
+      toast.success('Content updated! Changes are live.', { duration: 3000 });
     } catch (err) {
       console.error(err);
       toast.error('Failed to save changes');
@@ -181,19 +167,28 @@ const AdminDashboard = () => {
       return;
     }
     setIsSendingNewsletter(true);
-    const token = localStorage.getItem('digieonix_admin_token');
     try {
-      const res = await fetch('http://localhost:5000/api/leads/bulk-email', {
+      const emailList = leads.map(l => l.email).filter(e => e);
+      if (emailList.length === 0) {
+        toast.error('No valid emails found in leads');
+        setIsSendingNewsletter(false);
+        return;
+      }
+      
+      const res = await fetch('/mail.php', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ subject: newsletterSubject, body: newsletterBody })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          type: 'bulk',
+          subject: newsletterSubject, 
+          body: newsletterBody,
+          emails: emailList
+        })
       });
+      
       const data = await res.json();
       if (data.success) {
-        toast.success(data.message);
+        toast.success(data.message || 'Newsletter sent!');
         setNewsletterSubject('');
         setNewsletterBody('');
       } else {
